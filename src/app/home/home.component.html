@@ -1,0 +1,9 @@
+<div class="input-container" [formGroup]="form">
+    <div class="input-box">
+        <div class="title-box">Payment</div>
+        <input class="input" type="text" formControlName="name" placeholder="Enter your name" />
+        <input class="input" type="text" formControlName="email" placeholder="Enter your email" />
+        <input class="input" type="text" formControlName="phone" placeholder="Enter your phone number" />
+        <input class="submit-button" type="submit" value="Submit" (click)="onSubmit()" />
+    </div>
+</div> 
