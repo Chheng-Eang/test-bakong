@@ -1,50 +1,241 @@
-.input-container{
+.container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: #f0f2f5; // Light grey background for a softer look
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-    .input-box{
-        width: 300px;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid #ccc;
+.page-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f0f2f5;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 30px;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .input-box {
+        width: 100%;
+        max-width: 400px;
+        padding: 25px;
+        border-radius: 12px;
+        background-color: #ffffff;
+        border: 1px solid #d9d9d9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 14px;
+        gap: 18px;
 
-        .title-box{
+        .title-box {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
         }
 
-        .input{
+        .input {
             width: 100%;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 12px 15px;
+            border-radius: 8px;
             background-color: #fff;
-            border: 1px solid #ccc;
+            border: 1px solid #d9d9d9;
+            font-size: 16px;
+            color: #555;
+            box-sizing: border-box;
+
+            &::placeholder {
+                color: #aaa;
+            }
+
+            &:focus {
+                border-color: #1890ff;
+                box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+                outline: none;
+            }
         }
 
-        .submit-button{
+        .submit-button {
             width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            background-color: #1a89ff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background-color: #1890ff;
             color: #fff;
             border: none;
             cursor: pointer;
             font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #40a9ff;
+            }
+
+            &:disabled {
+                background-color: #f5f5f5;
+                color: #ccc;
+                cursor: not-allowed;
+            }
+        }
+
+        .error-message {
+            color: #ff4d4f;
+            font-size: 13px;
+            margin-top: -10px;
+            margin-bottom: 5px;
+            text-align: left;
+            width: 100%;
         }
     }
 }
+
+/* KHQR Card Styles - Based on the provided image */
+.khqr-card-container-wrapper {
+    width: 100%;
+    max-width: 300px; /* Adjusted to better match image proportion */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.khqr-card-display {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 18px; /* More rounded corners like the image */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Softer, more diffused shadow */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    position: relative; /* For the red header notch */
+    overflow: hidden; /* Ensures header notch doesn't break border radius */
+}
+
+.khqr-card-header-red {
+    background-color: #d9232d; /* Red color from the image */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: center; /* Center KHQR logo */
+    align-items: center;
+    border-top-left-radius: 18px; /* Match card radius */
+    border-top-right-radius: 18px;
+    position: relative;
+
+    .khqr-header-logo-img {
+        height: 28px; /* Adjusted to match image */
+        width: auto;
+        filter: brightness(0) invert(1); /* Make SVG white */
+    }
+
+}
+
+.khqr-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content within the body */
+}
+
+.khqr-merchant-name {
+    font-size: 16px; /* Adjusted size */
+    font-weight: 500; /* Medium weight */
+    color: #333333;
+    margin-bottom: 5px; /* Reduced margin */
+    text-align: center;
+}
+
+.khqr-amount-display {
+    display: flex;
+    align-items: baseline; /* Align amount and currency code */
+    justify-content: center;
+    margin-bottom: 15px; /* Space before separator */
+    text-align: center;
+    width: 100%;
+
+    .amount-value {
+        font-size: 32px; /* Larger amount font size */
+        font-weight: 700; /* Bold */
+        color: #000000;
+        margin-right: 8px;
+    }
+
+    .currency-code {
+        font-size: 18px; /* Slightly smaller currency code */
+        font-weight: 500;
+        color: #555555;
+    }
+}
+
+.khqr-separator {
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(to right, #cccccc 50%, transparent 50%);
+    background-size: 10px 1px;
+    border: none;
+    margin-bottom: 20px; /* Space after separator */
+}
+
+.khqr-image-section {
+    position: relative; /* For positioning the overlay logo */
+    display: inline-block; /* To wrap around the image */
+    margin-bottom: 20px; /* Space after QR code */
+
+    .khqr-code-image {
+        width: 220px; /* Slightly larger QR code */
+        height: 220px;
+        display: block;
+        border: 1px solid #eeeeee; /* Very light border */
+    }
+
+    .bakong-overlay-logo {
+        position: absolute;
+        bottom: 43%; // Adjust to center vertically
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px; /* Adjust size of overlay logo */
+        height: 40px;
+        background-color: #fff; /* White circular background */
+        border-radius: 50%;
+        padding: 5px; /* Padding around the Bakong logo */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+}
+
+/* Remove unused styles if not needed */
+// .khqr-scan-to-pay {
+//     font-size: 18px;
+//     font-weight: bold;
+//     color: #ffffff;
+//     background-color: #007bff; /* Bright blue for call to action */
+//     padding: 10px 20px;
+//     border-radius: 20px; /* Pill shape */
+//     margin-bottom: 15px;
+//     text-transform: uppercase;
+// }
+
+// .khqr-footer-logos {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100%;
+//     margin-top: 10px;
+//     padding-top: 15px;
+//     border-top: 2px solid #f0f0f0; /* Light separator line */
+//     min-height: 30px; /* Space for potential logos */
+// }

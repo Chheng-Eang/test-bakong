@@ -1,9 +1,47 @@
-<div class="input-container" [formGroup]="form">
+<div class="page-container">
+  <div class="input-container" [formGroup]="form">
     <div class="input-box">
-        <div class="title-box">Payment</div>
-        <input class="input" type="text" formControlName="name" placeholder="Enter your name" />
-        <input class="input" type="text" formControlName="email" placeholder="Enter your email" />
-        <input class="input" type="text" formControlName="phone" placeholder="Enter your phone number" />
-        <input class="submit-button" type="submit" value="Submit" (click)="onSubmit()" />
+      <div class="title-box">Payment</div>
+      <input class="input" type="text" formControlName="name" placeholder="Enter your name" />
+      <!-- Basic error display for name -->
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+        <div *ngIf="name.errors?.['required']">Name is required.</div>
+      </div>
+
+      <input class="input" type="text" formControlName="email" placeholder="Enter your email" />
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+        <div *ngIf="email.errors?.['email']">Please enter a valid email.</div>
+      </div>
+
+      <input class="input" type="text" formControlName="phone" placeholder="Enter your phone number" />
+
+      <input class="submit-button" type="submit" value="Generate KHQR" (click)="onSubmit()" />
     </div>
-</div> 
+  </div>
+
+  <!-- KHQR Card Display Section -->
+  <div *ngIf="khqrCodeDataUrl" class="khqr-card-container-wrapper">
+    <div class="khqr-card-display">
+      <div class="khqr-card-header-red">
+        <img src="assets/KHQR%20Logo.svg" alt="KHQR Logo" class="khqr-header-logo-img">
+      </div>
+      <div class="khqr-card-body">
+        <div class="khqr-merchant-name">{{ displayMerchantName }}</div>
+        <div class="khqr-amount-display">
+          <span class="amount-value">{{ displayAmount }}</span>
+          <span class="currency-code" *ngIf="displayCurrency">{{ displayCurrency }}</span>
+        </div>
+        <div class="khqr-separator"></div>
+        <div class="khqr-image-section">
+          <!-- Using ng-qrcode component for QR code generation -->
+          <qr-code [value]="khqrCodeDataUrl"
+                     [size]="220" 
+                     [errorCorrectionLevel]="'M'"
+                     [centerImageSrc]="'assets/bakong_logo_icon.png'" 
+                     [centerImageSize]="40">
+          </qr-code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
