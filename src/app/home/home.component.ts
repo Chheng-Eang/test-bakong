@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule, AbstractControl, } from '@angular/forms';
 import {BakongKHQR, khqrData, IndividualInfo, MerchantInfo, SourceInfo} from "bakong-khqr";
 
-
-
-
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -47,17 +44,18 @@ export class HomeComponent implements OnInit {
       usd: 840,
       khr: 116
     };
+    
     const optionalData = {
-        currency: currency.khr,
-        amount: 100,
-        billNumber: "#0001",
-        mobileNumber: "855962826514",
-        storeLabel: "Oem Chhengeang",
-        terminalLabel: "Oem Chhengeang",
-        purposeOfTransaction: "Payment for goods",
-        languagePreference: "en",
-        merchantCityAlternateLanguage: "ភ្នំពេញ",
-        expirationTimestamp: Date.now() + (1 * 60 * 1000),
+      currency: currency.khr,
+      amount: 100,
+      billNumber: "#0001",
+      mobileNumber: "855962826514",
+      storeLabel: "Oem Chhengeang",
+      terminalLabel: "Oem Chhengeang",
+      purposeOfTransaction: "Payment for goods",
+      languagePreference: "en",
+      merchantCityAlternateLanguage: "ភ្នំពេញ",
+      expirationTimestamp: Date.now() + (1 * 60 * 1000),
     };
 
     const individualInfo = {
@@ -75,6 +73,5 @@ export class HomeComponent implements OnInit {
     
     const response = khqr.generateIndividual(individualInfo);
     console.log(response);
-
   } 
 }
