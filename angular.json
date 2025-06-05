@@ -34,7 +34,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/bakong-khqr/src/index.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {

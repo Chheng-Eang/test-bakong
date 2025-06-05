@@ -1,0 +1,15 @@
+.filter-content{
+    width: 100%;
+    height: calc(100vh - 70px);
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    place-items: center;
+
+
+    .filter-container{
+        width: 100%;
+        max-width: 1400px;
+        height: 100%;
+    }
+}
